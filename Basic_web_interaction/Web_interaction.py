@@ -143,30 +143,7 @@ class WebInteraction:
                 driver.get("https://www.amazon.in/")
                 print(f"Current URL: {driver.current_url}")
 
-                # Handle potential popups or cookie consents
-                try:
-                    # Try to close any initial popups
-                    WebDriverWait(driver, 10).until(
-                        EC.element_to_be_clickable((By.CSS_SELECTOR, "input#close"))
-                    ).click()
-                except:
-                    pass
-
-                # Find search bar with multiple strategies
-                search_strategies = [
-                    (By.ID, "twotabsearchtextbox"),
-                    (By.NAME, "field-keywords"),
-                    (By.CSS_SELECTOR, "input[type='text'][name='field-keywords']")
-                ]
-
-                search_bar = None
-                for strategy, locator in search_strategies:
-                    try:
-                        search_bar = driver.find_element(strategy, locator)
-                        break
-                    except:
-                        continue
-
+                search_bar = driver.find_element(By.ID, "twotabsearchtextbox")
                 if not search_bar:
                     print("Could not find search bar!")
                     return False
@@ -177,7 +154,7 @@ class WebInteraction:
                 search_bar.send_keys(Keys.RETURN)
 
                 # Wait for search results with multiple conditions
-                WebDriverWait(driver, 20).until(
+                WebDriverWait(driver, 40).until(
                     EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div[data-component-type='s-search-result']"))
                 )
 
@@ -203,7 +180,7 @@ class WebInteraction:
                     print(f"Number of Products Found: {len(products)}")
                     
                     # Optional: Print first few product titles
-                    for i, product in enumerate(products[:5], 1):
+                    for i, product in enumerate(products):
                         try:
                             title = product.find_element(By.CSS_SELECTOR, "h2 a span").text
                             print(f"Product {i}: {title}")
