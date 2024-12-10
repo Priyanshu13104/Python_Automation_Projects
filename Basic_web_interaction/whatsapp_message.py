@@ -36,10 +36,10 @@ class WhatsappWebMessage:
             search_box = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located((By.XPATH, "//div[@contenteditable='true'][@data-tab='3']"))
             )          
-            search_box.send_keys("MeeT Pu")
+            search_box.send_keys("Palala")
             search_box.send_keys(Keys.RETURN)
             
-            time.sleep(10)
+            time.sleep(5)
             
             # message_box_xpaths = [
             #     "/html/body/div[1]/div/div/div[3]/div[4]/div/footer/div[1]/div/span/div/div[2]/div[1]/div/div[1]/p"
@@ -72,10 +72,10 @@ class WhatsappWebMessage:
             # messagebox = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div[3]/div[4]/div/footer/div[1]/div/span/div/div[2]/div[1]/div/div[1]/p")
             # messagebox = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div[3]/div[4]/div/footer/div[1]/div/span/div/div[2]/div[1]/div/div[1]/p")
             
-            for i in range(40):
+            for i in range(20):
                 messagebox = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div[3]/div[4]/div/footer/div[1]/div/span/div/div[2]/div[1]/div/div[1]/p")
                 messagebox.click()
-                messagebox.send_keys("abcdefghijklmnopqxyz")
+                messagebox.send_keys("Archan ne Christmas gift apvani che tare !!!!!!")
                 messagebox.send_keys(Keys.RETURN)
                 # time.sleep()
                 
